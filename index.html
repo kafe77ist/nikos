@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Николай — маркетинг общепита в Стамбуле</title>
+<meta name="description" content="Помогаю ресторанам и кафе Стамбула уйти от зависимости агрегаторов через физический маркетинг, SMM и инструменты лояльности."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Mulish:ital,wght@0,400;0,600;0,800;0,900;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink: #1a1a18;
+  --red: #d42b2b;
+  --yel: #f5c800;
+  --bg:  #f5f2ec;
+  --bg2: #edeae2;
+  --white: #ffffff;
+  --mid: #6b6860;
+  --border: rgba(26,26,24,.12);
+}
+
+html{ scroll-behavior:smooth; overflow-x:hidden }
+
+body{
+  font-family:'Mulish',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+/* ─── TICKER ─── */
+.ticker{
+  background:var(--ink);
+  overflow:hidden;
+  padding:7px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.ticker-inner{
+  display:flex;
+  width:max-content;
+  animation:tick 18s linear infinite;
+}
+.ticker-inner span{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:.95rem;
+  letter-spacing:.18em;
+  color:rgba(255,255,255,.45);
+  padding:0 2.2rem;
+  white-space:nowrap;
+}
+.ticker-inner span.hi{ color:var(--yel) }
+@keyframes tick{ to{ transform:translateX(-50%) } }
+
+/* ─── SCREEN 1 ─── */
+.s1{
+  display:grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  min-height:calc(100svh - 35px);
+}
+
+/* LEFT */
+.s1-left{
+  padding: 3.5rem 3.5rem 3rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  border-right: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.name-block{ position:relative }
+
+.eyebrow{
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--mid);
+  margin-bottom:1.4rem;
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+}
+.eyebrow::before{
+  content:'';
+  display:block;
+  width:28px; height:2px;
+  background:var(--red);
+  flex-shrink:0;
+}
+
+h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size: clamp(5rem, 10vw, 9.5rem);
+  line-height:.88;
+  color:var(--ink);
+  letter-spacing:.01em;
+}
+h1 em{
+  font-style:normal;
+  color:var(--red);
+}
+h1 .ghost{
+  -webkit-text-stroke: 2.5px var(--ink);
+  color:transparent;
+}
+
+.tagline{
+  margin-top:1.8rem;
+  font-size:1.05rem;
+  font-weight:600;
+  line-height:1.65;
+  color:var(--ink);
+  max-width:420px;
+}
+.tagline .accent{
+  background:var(--yel);
+  padding:0 .2em;
+  font-weight:900;
+}
+
+.desc{
+  margin-top:1rem;
+  font-size:.95rem;
+  line-height:1.75;
+  color:var(--mid);
+  max-width:400px;
+}
+
+/* CTA */
+.cta-area{
+  display:flex;
+  align-items:center;
+  gap:1.2rem;
+  flex-wrap:wrap;
+  margin-top:2.5rem;
+}
+
+.btn{
+  font-family:'Mulish',sans-serif;
+  font-weight:900;
+  font-size:.82rem;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  padding:.9rem 2.2rem;
+  text-decoration:none;
+  border-radius:3px;
+  transition:transform .12s, box-shadow .12s;
+  display:inline-block;
+}
+.btn-fill{
+  background:var(--ink);
+  color:var(--white);
+  box-shadow: 3px 3px 0 var(--red);
+}
+.btn-fill:hover{ transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--red) }
+.btn-line{
+  border: 2px solid var(--border);
+  color: var(--ink);
+}
+.btn-line:hover{ border-color:var(--ink) }
+
+.left-footer{
+  display:flex;
+  align-items:center;
+  gap:2rem;
+  padding-top:2rem;
+  border-top:1px solid var(--border);
+}
+.stat{ }
+.stat-n{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.2rem;
+  color:var(--ink);
+  line-height:1;
+}
+.stat-n span{ color:var(--red) }
+.stat-l{
+  font-size:.65rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--mid);
+  margin-top:.2rem;
+}
+.stat-sep{ width:1px; height:36px; background:var(--border) }
+
+/* RIGHT */
+.s1-right{
+  background:var(--bg2);
+  padding: 3.5rem 3rem 3rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:2rem;
+}
+
+.problem-head{
+  font-family:'Bebas Neue',sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  line-height:1;
+  color:var(--ink);
+}
+.problem-head .strike{
+  position:relative;
+  display:inline-block;
+  color:var(--red);
+}
+.problem-head .strike::after{
+  content:'';
+  position:absolute;
+  left:0; top:52%;
+  width:100%; height:4px;
+  background:var(--ink);
+  transform:rotate(-1.5deg);
+}
+
+.problem-body{
+  font-size:.95rem;
+  line-height:1.7;
+  color:var(--mid);
+  margin-top:1rem;
+  max-width:380px;
+}
+.problem-body strong{ color:var(--ink); font-weight:800 }
+
+.pain-list{
+  display:flex;
+  flex-direction:column;
+  gap:.7rem;
+}
+
+.pain-item{
+  display:flex;
+  gap:.9rem;
+  align-items:flex-start;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:.95rem 1.1rem;
+  transition:border-color .18s, transform .15s;
+}
+.pain-item:hover{ border-color:var(--red); transform:translateX(4px) }
+
+.pain-icon{ font-size:1.2rem; flex-shrink:0; margin-top:1px }
+.pain-title{ font-weight:800; font-size:.88rem; color:var(--ink); margin-bottom:.2rem }
+.pain-text{ font-size:.82rem; color:var(--mid); line-height:1.55 }
+
+.answer-card{
+  background:var(--ink);
+  border-radius:4px;
+  padding:1.4rem 1.6rem;
+  position:relative;
+  overflow:hidden;
+}
+.answer-card::before{
+  content:'→';
+  position:absolute;
+  right:1.2rem; bottom:-.8rem;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:8rem;
+  color:rgba(255,255,255,.04);
+  line-height:1;
+}
+.answer-label{
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--yel);
+  margin-bottom:.6rem;
+}
+.answer-text{
+  font-size:.95rem;
+  font-weight:600;
+  color:rgba(255,255,255,.85);
+  line-height:1.65;
+}
+
+/* ─── SCREEN 2 ─── */
+.s2{
+  background:var(--white);
+  border-top:1px solid var(--border);
+  padding: 4rem 3.5rem 3.5rem;
+  display:grid;
+  grid-template-rows: auto auto 1fr auto;
+  min-height:100svh;
+}
+
+.s2-top{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2rem;
+  align-items:end;
+  margin-bottom:3rem;
+  padding-bottom:2rem;
+  border-bottom:1px solid var(--border);
+}
+
+h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  line-height:.9;
+  color:var(--ink);
+}
+h2 .accent{ color:var(--red) }
+
+.s2-intro{
+  font-size:1rem;
+  line-height:1.7;
+  color:var(--mid);
+}
+.s2-intro strong{ color:var(--ink); font-weight:800 }
+
+/* WAVES */
+.waves{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.2rem;
+  margin-bottom:1.2rem;
+}
+
+.wcard{
+  border:1px solid var(--border);
+  border-radius:6px;
+  overflow:hidden;
+  background:var(--bg);
+  transition:transform .2s, border-color .2s, box-shadow .2s;
+  opacity:0;
+  transform:translateY(16px);
+}
+.wcard.vis{
+  opacity:1;
+  transform:none;
+  transition:opacity .4s ease, transform .4s ease, border-color .2s, box-shadow .2s;
+}
+.wcard:hover{
+  border-color:var(--red);
+  transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+}
+
+.wcard-top{
+  padding:1.4rem 1.4rem .8rem;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:.5rem;
+}
+.wnum{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3rem;
+  line-height:1;
+  color:var(--border);
+}
+.wbadge{
+  font-size:.62rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:var(--white);
+  padding:.28rem .7rem;
+  border-radius:2px;
+  margin-top:.4rem;
+}
+.wbadge.y{ background:var(--yel); color:var(--ink) }
+.wbadge.b{ background:var(--red) }
+
+.wcard-body{ padding:1rem 1.4rem 1.4rem }
+.wtitle{
+  font-weight:900;
+  font-size:1rem;
+  color:var(--ink);
+  margin-bottom:.4rem;
+}
+.wdesc{
+  font-size:.85rem;
+  color:var(--mid);
+  line-height:1.6;
+  margin-bottom:1rem;
+}
+.witems{
+  display:flex;
+  flex-direction:column;
+  gap:.35rem;
+}
+.witem{
+  font-size:.8rem;
+  color:var(--mid);
+  display:flex;
+  align-items:baseline;
+  gap:.5rem;
+  line-height:1.45;
+}
+.witem::before{
+  content:'—';
+  color:var(--red);
+  flex-shrink:0;
+  font-weight:800;
+}
+.witem strong{ color:var(--ink); font-weight:800 }
+
+/* REFS ROW */
+.refs-row{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:1.5rem;
+  align-items:center;
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:1.2rem 1.6rem;
+  margin-bottom:2.5rem;
+}
+.refs-label{
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--mid);
+  white-space:nowrap;
+}
+.refs-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+}
+.rtag{
+  font-size:.75rem;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:2px;
+  padding:.25rem .7rem;
+  transition:border-color .15s;
+}
+.rtag:hover{ border-color:var(--ink) }
+
+/* CONTACT */
+.contact-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:1.5rem;
+  padding-top:2rem;
+  border-top:1px solid var(--border);
+}
+.contact-msg{
+  font-size:1.05rem;
+  font-weight:600;
+  color:var(--ink);
+}
+.contact-msg span{ color:var(--red) }
+.contact-links{
+  display:flex;
+  gap:.7rem;
+  flex-wrap:wrap;
+}
+.clink{
+  font-weight:800;
+  font-size:.78rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:.75rem 1.4rem;
+  border-radius:3px;
+  text-decoration:none;
+  transition:transform .12s, box-shadow .12s;
+  display:flex;
+  align-items:center;
+  gap:.45rem;
+}
+.clink-wa{
+  background:var(--ink);
+  color:var(--white);
+  box-shadow:3px 3px 0 var(--red);
+}
+.clink-wa:hover{ transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--red) }
+.clink-other{
+  border:1.5px solid var(--border);
+  color:var(--ink);
+}
+.clink-other:hover{ border-color:var(--ink) }
+
+/* FLOAT BTN */
+.floater{
+  position:fixed;
+  bottom:1.8rem; right:1.8rem;
+  z-index:100;
+  animation:bob 3.5s ease-in-out infinite;
+}
+.floater a{
+  font-weight:900;
+  font-size:.75rem;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  background:var(--red);
+  color:var(--white);
+  padding:.85rem 1.6rem;
+  border-radius:100px;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  box-shadow:0 6px 24px rgba(212,43,43,.35), 0 0 0 3px var(--white);
+  transition:transform .15s;
+}
+.floater a:hover{ transform:scale(1.05) }
+@keyframes bob{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+/* FADE IN ON LOAD */
+@keyframes up{ from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+@keyframes left{ from{opacity:0;transform:translateX(-18px)} to{opacity:1;transform:translateX(0)} }
+
+.eyebrow{ animation:left .4s .1s both }
+h1{ animation:up .5s .15s both }
+.tagline{ animation:up .5s .25s both }
+.desc{ animation:up .5s .32s both }
+.cta-area{ animation:up .5s .4s both }
+.left-footer{ animation:up .5s .48s both }
+.problem-head{ animation:up .5s .2s both }
+.problem-body{ animation:up .5s .3s both }
+.pain-list{ animation:up .5s .38s both }
+.answer-card{ animation:up .5s .5s both }
+
+/* ─── MOBILE ─── */
+@media(max-width:800px){
+  .s1{ grid-template-columns:1fr; min-height:auto }
+  .s1-left{
+    padding:2rem 1.5rem 2rem;
+    border-right:none;
+    border-bottom:1px solid var(--border);
+  }
+  .s1-right{ padding:2rem 1.5rem 2rem }
+  h1{ font-size:clamp(4rem,18vw,7rem) }
+  .tagline{ font-size:.95rem }
+  .desc{ font-size:.88rem }
+
+  .s2{ padding:2.5rem 1.5rem 2rem }
+  .s2-top{ grid-template-columns:1fr; gap:1rem; margin-bottom:2rem }
+  .waves{ grid-template-columns:1fr; gap:1rem }
+  .refs-row{ grid-template-columns:1fr; gap:.8rem }
+  .contact-row{ flex-direction:column; align-items:flex-start }
+  .floater{ bottom:1rem; right:1rem }
+}
+@media(max-width:500px){
+  .s2{ padding:2rem 1.2rem 1.5rem }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="hi">Николай</span>
+    <span>·</span>
+    <span>Маркетинг для общепита</span>
+    <span>·</span>
+    <span class="hi">Стамбул</span>
+    <span>·</span>
+    <span>Уходи от агрегаторов</span>
+    <span>·</span>
+    <span>3 волны роста</span>
+    <span>·</span>
+    <span class="hi">Физика + Digital</span>
+    <span>·</span>
+    <span>Лояльность</span>
+    <span>·</span>
+    <span class="hi">SMM</span>
+    <span>·</span>
+    <span>SaaS</span>
+    <span>·</span>
+    <span class="hi">Николай</span>
+    <span>·</span>
+    <span>Маркетинг для общепита</span>
+    <span>·</span>
+    <span class="hi">Стамбул</span>
+    <span>·</span>
+    <span>Уходи от агрегаторов</span>
+    <span>·</span>
+    <span>3 волны роста</span>
+    <span>·</span>
+    <span class="hi">Физика + Digital</span>
+    <span>·</span>
+    <span>Лояльность</span>
+    <span>·</span>
+    <span class="hi">SMM</span>
+    <span>·</span>
+    <span>SaaS</span>
+    <span>·</span>
+  </div>
+</div>
+
+<!-- SCREEN 1 -->
+<section class="s1">
+
+  <div class="s1-left">
+    <div class="name-block">
+      <p class="eyebrow">Маркетинг · Стамбул</p>
+      <h1>НИ<em>КО</em><br/><span class="ghost">ЛАЙ</span></h1>
+      <p class="tagline">
+        Помогаю ресторанам и кафе Стамбула<br/>
+        <span class="accent">уйти от зависимости агрегаторов.</span>
+      </p>
+      <p class="desc">
+        Большинство владельцев общепита держат все яйца в одной корзине — у Yemeksepeti, Getir и других. Я перекладываю яйца в другие корзины: соцсети, физическое пространство, прямые каналы связи с гостями.
+      </p>
+      <div class="cta-area">
+        <a href="#contact" class="btn btn-fill">Обсудить проект →</a>
+        <a href="#s2" class="btn btn-line">Как я работаю</a>
+      </div>
+    </div>
+    <div class="left-footer">
+      <div class="stat"><div class="stat-n">3<span>+</span></div><div class="stat-l">Волны роста</div></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><div class="stat-n">30<span>+</span></div><div class="stat-l">Инструментов</div></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><div class="stat-n">0%</div><div class="stat-l">Комиссий агрегатора</div></div>
+    </div>
+  </div>
+
+  <div class="s1-right">
+    <div>
+      <h2 class="problem-head" style="font-size:clamp(2.2rem,4vw,3.5rem)">
+        25–35%<br/>ВАШЕЙ ВЫРУЧКИ<br/>
+        БЕРЁТ <span class="strike">АГРЕГАТОР</span>
+      </h2>
+      <p class="problem-body">
+        И это только комиссия. Плюс — <strong>клиентская база остаётся у них</strong>, ваш бренд не строится, повторные заказы снова через них. Вы платите снова.
+      </p>
+    </div>
+
+    <div class="pain-list">
+      <div class="pain-item">
+        <div class="pain-icon">📵</div>
+        <div>
+          <div class="pain-title">Нет прямого канала с гостем</div>
+          <div class="pain-text">Ни Instagram с живой аудиторией, ни своей базы контактов, ни WhatsApp-рассылки.</div>
+        </div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">🏚️</div>
+        <div>
+          <div class="pain-title">Физическое пространство не продаёт</div>
+          <div class="pain-text">Гость ел, ушёл и забыл. Никаких QR-меток, программы лояльности, поводов вернуться.</div>
+        </div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">📉</div>
+        <div>
+          <div class="pain-title">Конкуренция только по цене</div>
+          <div class="pain-text">В ленте агрегатора вы выглядите как все остальные. Демпинг — единственный рычаг.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="answer-card">
+      <div class="answer-label">Мой подход</div>
+      <div class="answer-text">
+        Начинаем с быстрых побед — первые деньги за неделю. Потом рекурринг. Потом большой чек. Каждая волна окупается до перехода к следующей.
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- SCREEN 2 -->
+<section class="s2" id="s2">
+
+  <div class="s2-top">
+    <h2>КАК Я<br/><span class="accent">РАБОТАЮ</span></h2>
+    <p class="s2-intro">
+      Не продаю всё сразу — это честно и практично. <strong>Три волны:</strong> каждая приносит результат и финансирует следующую. Плюс реферальная сеть партнёров для задач, которые выходят за рамки маркетинга.
+    </p>
+  </div>
+
+  <div class="waves">
+    <div class="wcard" data-d="0">
+      <div class="wcard-top">
+        <div class="wnum">01</div>
+        <div class="wbadge">Вход</div>
+      </div>
+      <div class="wcard-body">
+        <div class="wtitle">Быстрый вход и доверие</div>
+        <div class="wdesc">Инструменты, которые дают видимый результат за 1–2 недели и окупаются быстро.</div>
+        <div class="witems">
+          <div class="witem"><strong>QR-карточки</strong> — отзыв или подписка в Инстаграм, вкладываем в каждый пакет</div>
+          <div class="witem"><strong>Наклейки-пломбы</strong> — доверие к упаковке доставки</div>
+          <div class="witem"><strong>Вывеска на фасад</strong> с Instagram-адресом</div>
+          <div class="witem"><strong>Жетоны лояльности</strong> — собери 5 → приз, уникальный код</div>
+          <div class="witem"><strong>SMM-пак</strong> — фото, Reels, AI-контент, Highlights</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wcard" data-d="100">
+      <div class="wcard-top">
+        <div class="wnum">02</div>
+        <div class="wbadge y">Рост</div>
+      </div>
+      <div class="wcard-body">
+        <div class="wtitle">Повторные продажи</div>
+        <div class="wdesc">Переводим разовых гостей в постоянных. Строим каналы, которые работают без агрегаторов.</div>
+        <div class="witems">
+          <div class="witem"><strong>Scratch-карты</strong> — игровая механика у кассы</div>
+          <div class="witem"><strong>Расходники</strong> — упаковка, салфетки на регулярке</div>
+          <div class="witem"><strong>SaaS лояльность</strong> — Loopy / Stamp Me вместо жетонов</div>
+          <div class="witem"><strong>WhatsApp-рассылки</strong> — акции напрямую гостям</div>
+          <div class="witem"><strong>Sahibinden Consignment</strong> — проверенный товар с осмотром</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wcard" data-d="200">
+      <div class="wcard-top">
+        <div class="wnum">03</div>
+        <div class="wbadge b">Масштаб</div>
+      </div>
+      <div class="wcard-body">
+        <div class="wtitle">Высокий чек и масштаб</div>
+        <div class="wdesc">Когда база выстроена — делаем пространство, которое само продаёт и генерирует контент.</div>
+        <div class="witems">
+          <div class="witem"><strong>Неон, фотозона, штендеры</strong> — пространство работает на вас</div>
+          <div class="witem"><strong>Форма персонала</strong> — единый визуальный код</div>
+          <div class="witem"><strong>POS-системы</strong> — Adisyo / Simpra после аудита</div>
+          <div class="witem"><strong>Dark Kitchen</strong> — реферал под ключ</div>
+          <div class="witem"><strong>Цифровые разовые</strong> — логотип, сайт, меню, Google Business</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-row">
+    <div class="refs-label">Реф.&nbsp;партнёры</div>
+    <div class="refs-tags">
+      <span class="rtag">Zabıta-аудит</span>
+      <span class="rtag">Гранты KOSGEB</span>
+      <span class="rtag">Мальи мюшавир</span>
+      <span class="rtag">Типография</span>
+      <span class="rtag">iyzico / PayTR</span>
+      <span class="rtag">Dark Kitchen</span>
+    </div>
+  </div>
+
+  <div class="contact-row" id="contact">
+    <div class="contact-msg">
+      Первая консультация — <span>бесплатно</span>.<br/>
+      Работаю по всему Стамбулу.
+    </div>
+    <div class="contact-links">
+      <a href="https://wa.me/79000000000" class="clink clink-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a href="https://t.me/nikolay_istanbul" class="clink clink-other" target="_blank" rel="noopener">✈️ Telegram</a>
+      <a href="https://instagram.com/" class="clink clink-other" target="_blank" rel="noopener">📸 Instagram</a>
+      <a href="mailto:hello@example.com" class="clink clink-other">✉️ Email</a>
+    </div>
+  </div>
+
+</section>
+
+<div class="floater">
+  <a href="https://wa.me/79000000000" target="_blank" rel="noopener">💬 Написать</a>
+</div>
+
+<script>
+// Scroll reveal for wave cards
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const d = parseInt(e.target.dataset.d) || 0;
+      setTimeout(() => e.target.classList.add('vis'), d);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.wcard').forEach(w => io.observe(w));
+
+// Smooth anchor for "Как я работаю" button
+document.querySelector('a[href="#s2"]').addEventListener('click', e => {
+  e.preventDefault();
+  document.getElementById('s2').scrollIntoView({ behavior:'smooth' });
+});
+</script>
+</body>
+</html>
